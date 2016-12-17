@@ -1,3 +1,12 @@
+
+import os
+import time
+import subprocess
+import shlex
+import numpy as np
+import snap
+import pickle
+
 # Functions for generating SKGs using SNAP library
 #
 # 
@@ -12,8 +21,6 @@
 # - logfile : file path for shell output
 #
 def run_command(command, logfile=''):
-    import subprocess
-    import shlex
     doLog = False
     if logfile != '':
         outf = open(logfile, 'w')
@@ -27,7 +34,7 @@ def run_command(command, logfile=''):
             break
         if output:
             outs = output.strip()
-            print outs
+            print(outs)
             if doLog: outf.write(outs + '\n')
     rc = process.poll()
     if doLog: outf.close()
@@ -51,8 +58,6 @@ def run_command(command, logfile=''):
 # - overwrite : if True, overwrite existing files if 
 #
 def genSKG(outdir, snapdir, p_0 = [[0.9,0.5],[0.5,0.1]], k = 5, outname='',overwrite=False):
-    import os
-    import time
     
     if outname == '' : outname = time.strftime("%d%b%Y_%H%M%S")
     
@@ -74,14 +79,14 @@ def genSKG(outdir, snapdir, p_0 = [[0.9,0.5],[0.5,0.1]], k = 5, outname='',overw
         return fname
         os.chdir(curdir)
     else: 
-        print "WARNING: Graph already exists with the following name: "+fname
-        print "no SKG was generated."
+        print("WARNING: Graph already exists with the following name: "+fname)
+        print("no SKG was generated.")
         return fname
   
     if os.path.isfile(fname): 
         return fname
     else:
-        print "SKG generation failed"
+        print("SKG generation failed")
         return False
 
 # -----------------------------------------------------------------------------
@@ -104,8 +109,6 @@ def genSKG(outdir, snapdir, p_0 = [[0.9,0.5],[0.5,0.1]], k = 5, outname='',overw
 #              parameters will be pickled with this filename
 # 
 def graphStats( graph_file_list, savefile='' ):
-    import snap
-    import numpy as np
     n_sv = 4
     n_hop = 20
     n_deg = 2000
@@ -143,7 +146,6 @@ def graphStats( graph_file_list, savefile='' ):
     
     ## save the graph metrics
     if savefile != '':
-        import pickle
         with open(savefile,'w') as f:
             pickle.dump(skgStats, f)    
         
@@ -154,7 +156,6 @@ def graphStats( graph_file_list, savefile='' ):
 # -----------------------------------------------------------------------------
 # use SNAP to calculate graph metrics. For each function, the parameter "grpah"
 # is a SNAP graph object. Each function returns python lists
-import snap
 
 # Singular Values
 def svalsSNAP( graph, n_sv = 20):

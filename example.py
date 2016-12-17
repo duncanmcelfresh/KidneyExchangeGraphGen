@@ -2,14 +2,13 @@
 # initiator matrix: 
 # p_0 = [[0.9999,0.9999],[0.85,0.47]]
 
-from skg_functions import genSKG, graphStats
+import skg_functions
 import numpy as np
 import matplotlib.pyplot as plt
 import config
 
 # change this to the directory containing SNAP executables 
 snapdir = config.snapdir
-print snapdir
 
 # output directory for new SKG files
 outdir = '.'
@@ -26,11 +25,11 @@ numSKG = 3
 SKG_files = ['']*numSKG
 for i in range(numSKG):
     oname = str(i)
-    print oname
-    SKG_files[i] = genSKG( outdir, snapdir, p_0 = p0, k = kIter, outname=oname, overwrite=True )
+    print(oname)
+    SKG_files[i] = skg_functions.genSKG( outdir, snapdir, p_0 = p0, k = kIter, outname=oname, overwrite=True )
     
 # calculate statistics for SKGs
-[svSKG, hopSKG, inDegSKG, outDegSKG] = graphStats( SKG_files )
+[svSKG, hopSKG, inDegSKG, outDegSKG] = skg_functions.graphStats( SKG_files )
     
 # calculate CDF of in-degree for all SKGs
 cdfs = np.cumsum(inDegSKG,axis=1)
