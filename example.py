@@ -5,9 +5,11 @@
 from skg_functions import genSKG, graphStats
 import numpy as np
 import matplotlib.pyplot as plt
+import config
 
 # change this to the directory containing SNAP executables 
-snapdir = r'/Users/duncan/Documents/Software/snap'
+snapdir = config.snapdir
+print snapdir
 
 # output directory for new SKG files
 outdir = '.'
