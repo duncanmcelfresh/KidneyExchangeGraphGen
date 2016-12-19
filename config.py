@@ -9,7 +9,7 @@ __author__ = "Duncan McElfresh and John P. Dickerson"
 hostname = socket.gethostname()
 if hostname=='spooktop':
     snapdir = r'/home/spook/code/snap/'
-elif hostname=='DUNCAN-RUN-"HOSTNAME"-AND-PUT-THAT-STRING-HERE':
+elif hostname=='duncanmac.local':
     snapdir = r'/Users/duncan/Documents/Software/snap/'
 else:
     snapdir = r'/YOUR/SNAP/INSTALL/HERE/'
