@@ -9,13 +9,6 @@ import pickle
 
 # Functions for generating SKGs using SNAP library
 #
-import os
-import time
-import snap
-import numpy as np
-import subprocess
-import shlex
-import pickle
 #
 # -----------------------------------------------------------------------------
  #run_command: run a command using subprocess and save output
