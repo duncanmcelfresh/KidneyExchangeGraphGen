@@ -1,6 +1,9 @@
 # SKG-specific ignores #
 *.pickle
 *.txt
+snap.py
+_snap.so
+
 
 # System #
 *~
