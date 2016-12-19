@@ -1,5 +1,5 @@
 # Generate Stochastic Kronecker Graphs
-Generate SKGs using SNAP and calculate graph properties.
+Code for generating SKGs using SNAP and calculate graph properties, in Python 2.7.11.
 
 
 ## Stochastic Kronecker Graph (SKGs)
