@@ -1,6 +1,7 @@
 """convert_SKG_to_glasgow.py: converts an SKG file into Glasgow format for use 
 with the kidney_solver package. Altruists are detected automatically (any 
-vertex with no incoming edges is considered an altruist).
+vertex with no incoming edges is considered an altruist). All self-loops are 
+removed.
 
 This borrows from the script convert_CMU_input_to_Glasgow.py in the 
 kidney_solver/utils repo."""
@@ -72,11 +73,12 @@ def convert_and_write( out_ids, in_ids, output_base ):
                 pair_id_map[in_id] = new_pair_id
             seen_ids.add(in_id)
         
-        real_edge_list.append([out_id, in_id, weight])
-        if out_id in ndd_id_map.keys():
-            ndd_outgoing_edge_ct += 1
-        else:
-            pairs_outgoing_edge_ct += 1
+        if out_id != in_id: # remove self-loops
+                real_edge_list.append([out_id, in_id, weight])
+                if out_id in ndd_id_map.keys():
+                    ndd_outgoing_edge_ct += 1
+                else:
+                    pairs_outgoing_edge_ct += 1
         
     # Write all edges to either the .gndd or the .ginput output file
     pair_outfile = "{0}.ginput".format(output_base)

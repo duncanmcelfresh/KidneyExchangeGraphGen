@@ -21,3 +21,7 @@ This file contains functions for generating and analyzing SKGs.
 
 **example.py**
 This script generates 10 SKGs, calculates some graph properties using skg_functions.py, and plots the in-degree distributions.
+
+**convert_SKG_to_glasgow.py**
+Command line utility onverts the SKG graph files to a format readable by James Trimble's [kidney_solver
+](https://github.com/jamestrimble/kidney_solver) codebase. 
